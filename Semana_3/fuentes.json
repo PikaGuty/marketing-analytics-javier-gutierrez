@@ -1,9 +1,0 @@
-{
-  "origen": "https://github.com/stanlybolanos/marketing-analytics-base-2026/tree/main/Semana_3/Tarea",
-  "sha256": {
-    "data\\uplift_campaign.csv": "bd3007bd1ed3c45e6f4f6d1df1fd05174e6b6bc9ee97b7dd2d224086c49f16e7",
-    "material_original\\uplift_campaign_FULL.csv": "80c2347389851c9fa8562e39e291c5dce2aa3155297621889db43537e03db943"
-  },
-  "seed": 42,
-  "test_size": 0.3
-}

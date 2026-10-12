@@ -86,7 +86,7 @@ def ejecutar(revelar_verdad=True):
 def revelar(r):
     """Auditoría posterior; no modifica modelos, scores ni políticas."""
     df = pd.read_csv(BASE/'data/uplift_campaign.csv')
-    full = pd.read_csv(BASE/'material_original/uplift_campaign_FULL.csv')
+    full = pd.read_csv(BASE/'data/uplift_campaign_FULL.csv')
     pd.testing.assert_frame_equal(df, full[df.columns])
     verdad = r['test'].merge(full[['customer_id','true_type','true_uplift_prob','true_value_of_contact']], on='customer_id', validate='one_to_one')
     r['verdad'] = verdad
