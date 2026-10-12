@@ -1,0 +1,4 @@
+*.pdf binary
+*.png binary
+Semana_3/data/*.csv -text
+Semana_3/material_original/* -text
