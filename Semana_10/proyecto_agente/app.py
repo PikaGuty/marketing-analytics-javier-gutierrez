@@ -23,7 +23,9 @@ import agente   # el agente: herramientas, FUENTES, cargar_datos y preguntar
 st.set_page_config(page_title="Agente de Marketing Analytics", layout="wide")
 st.title("Agente de Marketing Analytics")
 st.caption(f"LLM (Large Language Model, modelo grande de lenguaje): {agente.MODELO} · "
+           f"Respaldo: {agente.MODELO_RESPALDO} · "
            "Las cuentas las hacen las herramientas en Python, no el LLM.")
+agente.AVISAR = st.toast    # los reintentos (429 / 503) salen como aviso gris en la esquina
 
 # st.session_state guarda datos mientras la página está abierta (se borra al recargar)
 if "historial" not in st.session_state:
