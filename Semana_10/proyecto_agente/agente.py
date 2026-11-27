@@ -20,6 +20,15 @@ except ImportError:                            # VS Code: llave en el archivo .e
     from dotenv import load_dotenv
     load_dotenv()
     API_KEY = os.getenv("GEMINI_API_KEY")
+if not API_KEY:                                # Streamlit Community Cloud: llave en Secrets
+    try:
+        import streamlit as st
+        API_KEY = st.secrets.get("GEMINI_API_KEY")
+    except Exception:
+        API_KEY = None
+if not API_KEY:
+    raise RuntimeError("No encontré GEMINI_API_KEY. Pónganla en el archivo .env (VS Code) o en Secrets "
+                       "(Colab o Streamlit Community Cloud) así: GEMINI_API_KEY = \"su_llave\"")
 client = genai.Client(api_key=API_KEY)
 
 # Elegir un modelo "flash-lite" disponible en su cuenta
