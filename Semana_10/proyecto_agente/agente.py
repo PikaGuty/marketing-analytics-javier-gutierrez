@@ -409,7 +409,10 @@ INSTRUCCIONES = """Eres un tutor experto en Marketing Analytics para estudiantes
 7. Explica en pasos cortos, muestra la fórmula y define cada sigla.
 8. Copia los números tal como los devolvió la herramienta. No exageres ni redondees porcentajes
    (por ejemplo, no digas "más de la mitad" si la herramienta dice 48%).
-9. Para recomendar un precio con pruebas de precio: primero estimar_elasticidad y luego proponer_precio."""
+9. Para recomendar un precio con pruebas de precio: primero estimar_elasticidad y luego proponer_precio.
+10. Si el usuario nombra un producto, segmento o fuente que no existe tal cual en los datos, NO lo cambies
+    por uno parecido por tu cuenta: dile que no existe, muéstrale los nombres parecidos y pregúntale cuál quiso decir.
+11. Escribe las fórmulas en texto simple (por ejemplo CLV = m × (1 − c) ÷ (c + d)), sin LaTeX ni signos $."""
 
 
 def llamar_gemini(contenido, config=None):

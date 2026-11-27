@@ -12,6 +12,7 @@ Partes de este archivo:
   4. El chat
 """
 import os
+import re
 import tempfile
 
 import pandas as pd
@@ -114,6 +115,13 @@ with st.sidebar:
 
 
 # =============================================================== 3. Funciones de ayuda
+def sin_formulas(texto):
+    """Escapa los "$" fuera de los bloques de código para que Streamlit no tome "US$20 ... US$8"
+    como una fórmula matemática (dentro de `código` el "$" ya se ve bien)."""
+    partes = re.split(r"(`[^`]*`)", texto or "")
+    return "".join(p if p.startswith("`") else p.replace("$", "\\$") for p in partes)
+
+
 def mostrar_pasos(pasos):
     """Debajo de cada respuesta: qué herramientas usó el agente, con qué datos y qué devolvieron."""
     if not pasos:
@@ -153,7 +161,7 @@ def mostrar_aprobacion(i, mensaje):
 # 4a. Mostrar la conversación hasta ahora
 for i, m in enumerate(st.session_state.mensajes):
     with st.chat_message(m["rol"]):
-        st.markdown(m["texto"])
+        st.markdown(sin_formulas(m["texto"]))
         if m["rol"] == "assistant":
             mostrar_pasos(m.get("pasos"))
             if necesita_aprobacion(m.get("pasos")):
