@@ -4,3 +4,6 @@ pandas
 numpy
 matplotlib
 seaborn
+mlxtend
+jupyter
+notebook
